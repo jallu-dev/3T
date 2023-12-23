@@ -12,12 +12,14 @@ namespace _3T
 {
     public partial class Home : Form
     {
+
         public Home()
         {
             InitializeComponent();
         }
 
         level1 inside = null;
+        level2 level2 = null;
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -85,5 +87,15 @@ namespace _3T
             
         }
 
+        private void level2_Click(object sender, EventArgs e)
+        {
+            if (level2 == null || level2.IsDisposed)
+            {
+                level2 = new level2();
+            }
+
+            btnLevel2.Show();
+            this.Hide();
+        }
     }
 }

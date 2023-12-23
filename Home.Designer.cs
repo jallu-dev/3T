@@ -34,6 +34,9 @@
             this.highscore = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.btnLevel2 = new System.Windows.Forms.Button();
+            this.level4 = new System.Windows.Forms.Button();
+            this.level3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +94,34 @@
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(726, 753);
             this.axWindowsMediaPlayer1.TabIndex = 7;
             // 
+            // btnLevel2
+            // 
+            this.btnLevel2.Location = new System.Drawing.Point(34, 535);
+            this.btnLevel2.Name = "btnLevel2";
+            this.btnLevel2.Size = new System.Drawing.Size(75, 23);
+            this.btnLevel2.TabIndex = 8;
+            this.btnLevel2.Text = "level2";
+            this.btnLevel2.UseVisualStyleBackColor = true;
+            this.btnLevel2.Click += new System.EventHandler(this.level2_Click);
+            // 
+            // level4
+            // 
+            this.level4.Location = new System.Drawing.Point(196, 535);
+            this.level4.Name = "level4";
+            this.level4.Size = new System.Drawing.Size(75, 23);
+            this.level4.TabIndex = 9;
+            this.level4.Text = "level4";
+            this.level4.UseVisualStyleBackColor = true;
+            // 
+            // level3
+            // 
+            this.level3.Location = new System.Drawing.Point(115, 535);
+            this.level3.Name = "level3";
+            this.level3.Size = new System.Drawing.Size(75, 23);
+            this.level3.TabIndex = 10;
+            this.level3.Text = "level3";
+            this.level3.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -98,6 +129,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(710, 687);
+            this.Controls.Add(this.level3);
+            this.Controls.Add(this.level4);
+            this.Controls.Add(this.btnLevel2);
             this.Controls.Add(this.highscore);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPlay);
@@ -128,6 +162,9 @@
         private System.Windows.Forms.Label highscore;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private System.Windows.Forms.Button btnLevel2;
+        private System.Windows.Forms.Button level4;
+        private System.Windows.Forms.Button level3;
     }
 }
 
