@@ -86,8 +86,7 @@ namespace _3T
             btnPlay.ForeColor = Color.Red;
             
         }
-
-        private void level2_Click(object sender, EventArgs e)
+        private void btnLevel2_Click(object sender, EventArgs e)
         {
             if (level2 == null || level2.IsDisposed)
             {
