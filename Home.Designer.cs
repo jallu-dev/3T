@@ -75,7 +75,7 @@
             // 
             this.highscore.AutoSize = true;
             this.highscore.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.highscore.Location = new System.Drawing.Point(162, 23);
+            this.highscore.Location = new System.Drawing.Point(131, 23);
             this.highscore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.highscore.Name = "highscore";
             this.highscore.Size = new System.Drawing.Size(59, 33);

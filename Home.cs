@@ -18,8 +18,8 @@ namespace _3T
             InitializeComponent();
         }
 
-        level1 inside = null;
-        level2 level2 = null;
+        Level1 level1 = null;
+        Level2 level2 = null;
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -57,12 +57,12 @@ namespace _3T
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if (inside == null || inside.IsDisposed)
+            if (level1 == null || level1.IsDisposed)
             {
-                inside = new level1();
+                level1 = new Level1();
             }
 
-            inside.Show();
+            level1.Show();
             this.Hide();
         }
 
@@ -90,10 +90,10 @@ namespace _3T
         {
             if (level2 == null || level2.IsDisposed)
             {
-                level2 = new level2();
+                level2 = new Level2();
             }
 
-            btnLevel2.Show();
+            level2.Show();
             this.Hide();
         }
     }

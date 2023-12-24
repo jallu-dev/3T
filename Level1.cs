@@ -1,15 +1,30 @@
 ﻿using System;
 using System.Drawing;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace _3T
 {
-    public partial class level1 : Form
+    public partial class Level1 : Form
     {
-        level2 level2 = null;
-        public level1()
+        private int elapsedMinutes = 0; // Set the initial minutes
+        private int elapsedSeconds = 60;  // Set the initial seconds
+        private System.Timers.Timer timer;
+
+        Level2 level2 = null;
+        Level3 finished = null;
+        public Level1()
         {
             InitializeComponent();
+            lblMin.Text = elapsedMinutes.ToString("D2");
+            lblSec.Text = elapsedSeconds.ToString("D2");
+            // Set an interval of 1000 milliseconds (1 second)
+            int interval = 1000;
+
+            // Create a Timer with an Elapsed event handler
+            timer = new System.Timers.Timer(interval);
+            timer.Elapsed += TimerElapsed;
+            timer.Start();
         }
 
         private PictureBox CreatePictureBox(Point location)
@@ -26,67 +41,54 @@ namespace _3T
             // Add the PictureBox to the form
             Controls.Add(pictureBox);
             pictureBox.BringToFront();
-
+            
             return pictureBox; // Return the PictureBox for later reference
+        }
+
+        public void targetShot(PictureBox target, MouseEventArgs e)
+        {
+            lblScore.Text = (Convert.ToInt32(lblScore.Text) + 10).ToString("D4");
+            int x = target.Location.X + e.X - 10 / 2;
+            int y = target.Location.Y + e.Y - 10 / 2;
+
+            // Create a new PictureBox at the clicked location
+            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
+            target.Visible = false;
+            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible)
+            {
+                lblMin.Visible = lblSec.Visible = lblColon.Visible = false;
+                btnNextLevel.Visible = true;
+                if (timer != null)
+                {
+                    timer.Stop();
+                    timer.Dispose();
+                }
+            }
         }
 
         private void target1_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target1.Location.X + e.X - 10 / 2;
-            int y = target1.Location.Y + e.Y - 10 / 2;
-
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox( new Point(x, y));
-            target1.Visible = false;
-            if(!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+            targetShot(target1,e);
         }
 
         private void target2_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target2.Location.X + e.X - 10 / 2;
-            int y = target2.Location.Y + e.Y - 10 / 2;
-
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target2.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+            targetShot(target2, e);
         }
 
         private void target3_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target3.Location.X + e.X - 10 / 2;
-            int y = target3.Location.Y + e.Y - 10 / 2;
+            targetShot(target3, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target3.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
 
         private void target4_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target4.Location.X + e.X - 10 / 2;
-            int y = target4.Location.Y + e.Y - 10 / 2;
+            targetShot(target4, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target4.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
 
-        private void level1_MouseClick(object sender, MouseEventArgs e)
+        private void Level1_MouseClick(object sender, MouseEventArgs e)
         {
             int x = e.X - 10 / 2;
             int y = e.Y - 10 / 2;
@@ -112,11 +114,57 @@ namespace _3T
         {
             if(level2 == null || level2.IsDisposed)
             {
-                level2 = new level2();
+                level2 = new Level2();
             }
 
             level2.Show();
             this.Hide();
+        }
+
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            // Update elapsed time
+            elapsedSeconds--;
+
+            // Check if a minute has passed
+            if (elapsedSeconds < 0)
+            {
+                elapsedMinutes--;
+                elapsedSeconds = 59;
+            }
+
+            // Use Invoke to update UI controls from the UI thread
+            Invoke(new Action(() =>
+            {
+                // Display the remaining time as a countdown
+                lblMin.Text = elapsedMinutes.ToString("D2");
+                lblSec.Text = elapsedSeconds.ToString("D2");
+
+                // Check if the countdown has reached zero
+                if (elapsedMinutes == 0 && elapsedSeconds == 0)
+                {
+                    // Stop the timer or take appropriate action when the countdown reaches zero
+                    timer.Stop();
+                    if(finished == null || finished.IsDisposed)
+                    {
+                        finished = new Level3();
+                    }
+                    finished.Show();
+                    this.Hide();
+                }
+            }));
+        }
+
+        // Dispose of the timer when the form is closed
+        private void Level1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
         }
     }
 }

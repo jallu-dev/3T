@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace _3T
 {
-    public partial class level2 : Form
+    public partial class Level2 : Form
     {
         Level3 level3 = null;
-        public level2()
+        public Level2()
         {
             InitializeComponent();
         }

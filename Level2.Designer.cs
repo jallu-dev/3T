@@ -1,6 +1,6 @@
 ﻿namespace _3T
 {
-    partial class level2
+    partial class Level2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(level2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level2));
             this.btnNextLevel = new System.Windows.Forms.Button();
             this.level = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -381,7 +381,7 @@
             this.target20.TabStop = false;
             this.target20.MouseClick += new System.Windows.Forms.MouseEventHandler(this.target20_MouseClick);
             // 
-            // level2
+            // Level2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -416,7 +416,7 @@
             this.Cursor = System.Windows.Forms.Cursors.NoMove2D;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
-            this.Name = "level2";
+            this.Name = "Level2";
             this.Text = "Level2";
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.level2_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.target3)).EndInit();

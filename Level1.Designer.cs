@@ -1,6 +1,6 @@
 ﻿namespace _3T
 {
-    partial class level1
+    partial class Level1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(level1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level1));
             this.target1 = new System.Windows.Forms.PictureBox();
             this.target2 = new System.Windows.Forms.PictureBox();
             this.target4 = new System.Windows.Forms.PictureBox();
@@ -36,6 +36,11 @@
             this.level = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNextLevel = new System.Windows.Forms.Button();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.lblSec = new System.Windows.Forms.Label();
+            this.lblColon = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.target1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.target2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.target4)).BeginInit();
@@ -129,13 +134,73 @@
             this.btnNextLevel.MouseEnter += new System.EventHandler(this.btnNextLevel_MouseEnter);
             this.btnNextLevel.MouseLeave += new System.EventHandler(this.btnNextLevel_MouseLeave);
             // 
-            // level1
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.BackColor = System.Drawing.Color.Transparent;
+            this.lblMin.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.Location = new System.Drawing.Point(1035, 601);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(32, 24);
+            this.lblMin.TabIndex = 9;
+            this.lblMin.Text = "10";
+            // 
+            // lblSec
+            // 
+            this.lblSec.AutoSize = true;
+            this.lblSec.BackColor = System.Drawing.Color.Transparent;
+            this.lblSec.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSec.Location = new System.Drawing.Point(1079, 601);
+            this.lblSec.Name = "lblSec";
+            this.lblSec.Size = new System.Drawing.Size(32, 24);
+            this.lblSec.TabIndex = 10;
+            this.lblSec.Text = "10";
+            // 
+            // lblColon
+            // 
+            this.lblColon.AutoSize = true;
+            this.lblColon.BackColor = System.Drawing.Color.Transparent;
+            this.lblColon.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColon.Location = new System.Drawing.Point(1066, 601);
+            this.lblColon.Name = "lblColon";
+            this.lblColon.Size = new System.Drawing.Size(16, 24);
+            this.lblColon.TabIndex = 11;
+            this.lblColon.Text = ":";
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(74, 9);
+            this.lblScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(59, 33);
+            this.lblScore.TabIndex = 13;
+            this.lblScore.Text = "0000";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 33);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Score";
+            // 
+            // Level1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblColon);
+            this.Controls.Add(this.lblSec);
+            this.Controls.Add(this.lblMin);
             this.Controls.Add(this.btnNextLevel);
             this.Controls.Add(this.level);
             this.Controls.Add(this.label2);
@@ -146,10 +211,11 @@
             this.Cursor = System.Windows.Forms.Cursors.NoMove2D;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
-            this.Name = "level1";
+            this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Level 1";
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.level1_MouseClick);
+            this.Text = "Level1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Level1_FormClosed);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Level1_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.target1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.target2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.target4)).EndInit();
@@ -167,5 +233,10 @@
         private System.Windows.Forms.Label level;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNextLevel;
+        private System.Windows.Forms.Label lblColon;
+        public System.Windows.Forms.Label lblMin;
+        public System.Windows.Forms.Label lblSec;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label label1;
     }
 }
