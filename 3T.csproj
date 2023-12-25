@@ -52,6 +52,12 @@
     <Compile Include="End.Designer.cs">
       <DependentUpon>End.cs</DependentUpon>
     </Compile>
+    <Compile Include="Final.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Final.Designer.cs">
+      <DependentUpon>Final.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="End.resx">
       <DependentUpon>End.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Final.resx">
+      <DependentUpon>Final.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

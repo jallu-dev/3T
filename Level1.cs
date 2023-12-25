@@ -8,12 +8,14 @@ namespace _3T
     public partial class Level1 : Form
     {
         private int elapsedMinutes = 0; // Set the initial minutes
-        private int elapsedSeconds = 60;  // Set the initial seconds
+        private int elapsedSeconds = 10;  // Set the initial seconds
         private System.Timers.Timer timer;
 
+        string highScore = null;
+
         Level2 level2 = null;
-        Level3 finished = null;
-        public Level1()
+        Final final = null;
+        public Level1(string highScore)
         {
             InitializeComponent();
             lblMin.Text = elapsedMinutes.ToString("D2");
@@ -25,6 +27,8 @@ namespace _3T
             timer = new System.Timers.Timer(interval);
             timer.Elapsed += TimerElapsed;
             timer.Start();
+
+            this.highScore = highScore;
         }
 
         private PictureBox CreatePictureBox(Point location)
@@ -114,7 +118,7 @@ namespace _3T
         {
             if(level2 == null || level2.IsDisposed)
             {
-                level2 = new Level2();
+                level2 = new Level2(lblScore.Text, highScore);
             }
 
             level2.Show();
@@ -145,12 +149,13 @@ namespace _3T
                 {
                     // Stop the timer or take appropriate action when the countdown reaches zero
                     timer.Stop();
-                    if(finished == null || finished.IsDisposed)
+                    if(final == null || final.IsDisposed)
                     {
-                        finished = new Level3();
+                        final = new Final(lblScore.Text, highScore);
                     }
-                    finished.Show();
                     this.Hide();
+                    final.ShowDialog();
+
                 }
             }));
         }
@@ -166,5 +171,6 @@ namespace _3T
                 timer.Dispose();
             }
         }
+
     }
 }

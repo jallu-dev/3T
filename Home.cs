@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,11 @@ namespace _3T
 {
     public partial class Home : Form
     {
-
+        string highscore = null;
         public Home()
         {
             InitializeComponent();
+            lblHighscore.Text = Convert.ToInt32(ReadFromFile()).ToString("D4") ;
         }
 
         Level1 level1 = null;
@@ -59,7 +61,7 @@ namespace _3T
         {
             if (level1 == null || level1.IsDisposed)
             {
-                level1 = new Level1();
+                level1 = new Level1(lblHighscore.Text);
             }
 
             level1.Show();
@@ -86,15 +88,26 @@ namespace _3T
             btnPlay.ForeColor = Color.Red;
             
         }
-        private void btnLevel2_Click(object sender, EventArgs e)
+
+        static string ReadFromFile()
         {
-            if (level2 == null || level2.IsDisposed)
+            string retrievedValue = "";
+
+            try
             {
-                level2 = new Level2();
+                using (StreamReader reader = new StreamReader("highscore.txt"))
+                {
+                    retrievedValue = reader.ReadLine();
+                }
+
+                Console.WriteLine("Value read from file successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading from file: " + ex.Message);
             }
 
-            level2.Show();
-            this.Hide();
+            return retrievedValue;
         }
     }
 }

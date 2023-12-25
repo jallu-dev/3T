@@ -209,6 +209,7 @@
             this.Controls.Add(this.target2);
             this.Controls.Add(this.target1);
             this.Cursor = System.Windows.Forms.Cursors.NoMove2D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Level1";

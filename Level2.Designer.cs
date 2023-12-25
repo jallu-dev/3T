@@ -54,6 +54,11 @@
             this.target19 = new System.Windows.Forms.PictureBox();
             this.target22 = new System.Windows.Forms.PictureBox();
             this.target20 = new System.Windows.Forms.PictureBox();
+            this.lblColon = new System.Windows.Forms.Label();
+            this.lblSec = new System.Windows.Forms.Label();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.target3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.target4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.target2)).BeginInit();
@@ -381,6 +386,61 @@
             this.target20.TabStop = false;
             this.target20.MouseClick += new System.Windows.Forms.MouseEventHandler(this.target20_MouseClick);
             // 
+            // lblColon
+            // 
+            this.lblColon.AutoSize = true;
+            this.lblColon.BackColor = System.Drawing.Color.Transparent;
+            this.lblColon.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblColon.Location = new System.Drawing.Point(1072, 602);
+            this.lblColon.Name = "lblColon";
+            this.lblColon.Size = new System.Drawing.Size(16, 24);
+            this.lblColon.TabIndex = 36;
+            this.lblColon.Text = ":";
+            // 
+            // lblSec
+            // 
+            this.lblSec.AutoSize = true;
+            this.lblSec.BackColor = System.Drawing.Color.Transparent;
+            this.lblSec.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSec.Location = new System.Drawing.Point(1085, 602);
+            this.lblSec.Name = "lblSec";
+            this.lblSec.Size = new System.Drawing.Size(32, 24);
+            this.lblSec.TabIndex = 35;
+            this.lblSec.Text = "10";
+            // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.BackColor = System.Drawing.Color.Transparent;
+            this.lblMin.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.Location = new System.Drawing.Point(1041, 602);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(32, 24);
+            this.lblMin.TabIndex = 34;
+            this.lblMin.Text = "10";
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(74, 9);
+            this.lblScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(59, 33);
+            this.lblScore.TabIndex = 38;
+            this.lblScore.Text = "0000";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 33);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Score";
+            // 
             // Level2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,6 +448,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblColon);
+            this.Controls.Add(this.lblSec);
+            this.Controls.Add(this.lblMin);
             this.Controls.Add(this.target21);
             this.Controls.Add(this.target19);
             this.Controls.Add(this.target22);
@@ -418,7 +483,8 @@
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Level2";
             this.Text = "Level2";
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.level2_MouseClick);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Level2_FormClosed);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Level2_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.target3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.target4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.target2)).EndInit();
@@ -473,5 +539,10 @@
         private System.Windows.Forms.PictureBox target19;
         private System.Windows.Forms.PictureBox target22;
         private System.Windows.Forms.PictureBox target20;
+        private System.Windows.Forms.Label lblColon;
+        public System.Windows.Forms.Label lblSec;
+        public System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label label1;
     }
 }

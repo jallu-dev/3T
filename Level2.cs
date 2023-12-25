@@ -1,21 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace _3T
 {
     public partial class Level2 : Form
     {
+        private int elapsedMinutes = 0; // Set the initial minutes
+        private int elapsedSeconds = 30;  // Set the initial seconds
+        private System.Timers.Timer timer;
+
+        string highScore = null;
+
         Level3 level3 = null;
-        public Level2()
+        Final final = null;
+        public Level2(string curScore, string highScore)
         {
             InitializeComponent();
+            lblMin.Text = elapsedMinutes.ToString("D2");
+            lblSec.Text = elapsedSeconds.ToString("D2");
+            // Set an interval of 1000 milliseconds (1 second)
+            int interval = 1000;
+
+            // Create a Timer with an Elapsed event handler
+            timer = new System.Timers.Timer(interval);
+            timer.Elapsed += TimerElapsed;
+            timer.Start();
+
+            lblScore.Text = curScore;
+            this.highScore = highScore;
+
         }
 
         private PictureBox CreatePictureBox(Point location)
@@ -36,324 +52,143 @@ namespace _3T
             return pictureBox; // Return the PictureBox for later reference
         }
 
-        
-
-        private void level2_MouseClick(object sender, MouseEventArgs e)
+        public void targetShot(PictureBox target, MouseEventArgs e)
         {
-            int x = e.X - 10 / 2;
-            int y = e.Y - 10 / 2;
+            lblScore.Text = (Convert.ToInt32(lblScore.Text) + 10).ToString("D4");
+            int x = target.Location.X + e.X - 10 / 2;
+            int y = target.Location.Y + e.Y - 10 / 2;
 
             // Create a new PictureBox at the clicked location
             PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
+            target.Visible = false;
+            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible && !target22.Visible)
+            {
+                lblMin.Visible = lblSec.Visible = lblColon.Visible = false;
+                btnNextLevel.Visible = true;
+                if (timer != null)
+                {
+                    timer.Stop();
+                    timer.Dispose();
+                }
+            }
         }
 
         private void target1_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target1.Location.X + e.X - 10 / 2;
-            int y = target1.Location.Y + e.Y - 10 / 2;
-
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target1.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+            targetShot(target1, e);
         }
 
         private void target2_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target2.Location.X + e.X - 10 / 2;
-            int y = target2.Location.Y + e.Y - 10 / 2;
-
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target2.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+            targetShot(target2, e);
         }
 
         private void target3_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target3.Location.X + e.X - 10 / 2;
-            int y = target3.Location.Y + e.Y - 10 / 2;
+            targetShot(target3, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target3.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
 
         private void target4_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target4.Location.X + e.X - 10 / 2;
-            int y = target4.Location.Y + e.Y - 10 / 2;
+            targetShot(target4, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target4.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
 
         private void target5_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target5.Location.X + e.X - 10 / 2;
-            int y = target5.Location.Y + e.Y - 10 / 2;
+            targetShot(target5, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target5.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
 
         private void target6_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target6.Location.X + e.X - 10 / 2;
-            int y = target6.Location.Y + e.Y - 10 / 2;
+            targetShot(target6, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target6.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
 
         private void target7_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target7.Location.X + e.X - 10 / 2;
-            int y = target7.Location.Y + e.Y - 10 / 2;
+            targetShot(target7, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target7.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+
         }
 
         private void target8_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target8.Location.X + e.X - 10 / 2;
-            int y = target8.Location.Y + e.Y - 10 / 2;
+            targetShot(target8, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target8.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target9_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target9.Location.X + e.X - 10 / 2;
-            int y = target9.Location.Y + e.Y - 10 / 2;
+            targetShot(target9, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target9.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target10_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target10.Location.X + e.X - 10 / 2;
-            int y = target10.Location.Y + e.Y - 10 / 2;
+            targetShot(target10, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target10.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target11_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target11.Location.X + e.X - 10 / 2;
-            int y = target11.Location.Y + e.Y - 10 / 2;
+            targetShot(target11, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target11.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
-        private void target12_MouseClick(object sender, MouseEventArgs e)
-        {
-            int x = target12.Location.X + e.X - 10 / 2;
-            int y = target12.Location.Y + e.Y - 10 / 2;
-
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target12.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
-        }
-
         private void target13_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target13.Location.X + e.X - 10 / 2;
-            int y = target13.Location.Y + e.Y - 10 / 2;
+            targetShot(target13, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target13.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target14_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target14.Location.X + e.X - 10 / 2;
-            int y = target14.Location.Y + e.Y - 10 / 2;
+            targetShot(target14, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target14.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target15_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target15.Location.X + e.X - 10 / 2;
-            int y = target15.Location.Y + e.Y - 10 / 2;
+            targetShot(target15, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target15.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+
         }
-
         private void target16_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target16.Location.X + e.X - 10 / 2;
-            int y = target16.Location.Y + e.Y - 10 / 2;
+            targetShot(target16, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target16.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target17_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target17.Location.X + e.X - 10 / 2;
-            int y = target17.Location.Y + e.Y - 10 / 2;
+            targetShot(target17, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target17.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target18_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target18.Location.X + e.X - 10 / 2;
-            int y = target18.Location.Y + e.Y - 10 / 2;
+            targetShot(target18, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target18.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target19_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target19.Location.X + e.X - 10 / 2;
-            int y = target19.Location.Y + e.Y - 10 / 2;
+            targetShot(target19, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target19.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target20_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target20.Location.X + e.X - 10 / 2;
-            int y = target20.Location.Y + e.Y - 10 / 2;
+            targetShot(target20, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target20.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target21_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target21.Location.X + e.X - 10 / 2;
-            int y = target21.Location.Y + e.Y - 10 / 2;
+            targetShot(target21, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target21.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
         }
-
         private void target22_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = target22.Location.X + e.X - 10 / 2;
-            int y = target22.Location.Y + e.Y - 10 / 2;
+            targetShot(target22, e);
 
-            // Create a new PictureBox at the clicked location
-            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
-            target22.Visible = false;
-            if (!target1.Visible && !target2.Visible && !target3.Visible && !target4.Visible && !target5.Visible && !target6.Visible && !target7.Visible && !target8.Visible && !target9.Visible && !target10.Visible && !target11.Visible && !target12.Visible && !target13.Visible && !target14.Visible && !target15.Visible && !target16.Visible && !target17.Visible && !target18.Visible && !target19.Visible && !target20.Visible && !target21.Visible)
-            {
-                btnNextLevel.Visible = true;
-            }
+        }
+        private void target12_MouseClick(object sender, MouseEventArgs e)
+        {
+            targetShot(target12, e);
+
         }
 
         private void btnNextLevel_MouseEnter(object sender, EventArgs e)
@@ -366,6 +201,7 @@ namespace _3T
         {
             btnNextLevel.BackColor = Color.Transparent;
             btnNextLevel.FlatAppearance.BorderSize = 1;
+
         }
 
         private void btnNextLevel_Click(object sender, EventArgs e)
@@ -378,5 +214,63 @@ namespace _3T
             level3.Show();
             this.Hide();
         }
+
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            // Update elapsed time
+            elapsedSeconds--;
+
+            // Check if a minute has passed
+            if (elapsedSeconds < 0)
+            {
+                elapsedMinutes--;
+                elapsedSeconds = 59;
+            }
+
+            // Use Invoke to update UI controls from the UI thread
+            Invoke(new Action(() =>
+            {
+                // Display the remaining time as a countdown
+                lblMin.Text = elapsedMinutes.ToString("D2");
+                lblSec.Text = elapsedSeconds.ToString("D2");
+
+                // Check if the countdown has reached zero
+                if (elapsedMinutes == 0 && elapsedSeconds == 0)
+                {
+                    // Stop the timer or take appropriate action when the countdown reaches zero
+                    timer.Stop();
+                    if (final == null || final.IsDisposed)
+                    {
+                        final = new Final(lblScore.Text, highScore);
+                    }
+                    this.Hide();
+                    final.ShowDialog();
+
+                }
+            }));
+        }
+
+        // Dispose of the timer when the form is closed
+        private void Level2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+        }
+
+        private void Level2_MouseClick(object sender, MouseEventArgs e)
+        {
+            int x = e.X - 10 / 2;
+            int y = e.Y - 10 / 2;
+
+            // Create a new PictureBox at the clicked location
+            PictureBox newPictureBox = CreatePictureBox(new Point(x, y));
+        }
+
+        
     }
 }
