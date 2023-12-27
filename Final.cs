@@ -18,7 +18,7 @@ namespace _3T
         {
             InitializeComponent();
             lblScore.Text = score;
-            lblHighScore.Text = Convert.ToInt32(score) > Convert.ToInt32(lblHighScore.Text) ? score: highScore;
+            lblHighScore.Text = Convert.ToInt32(score) > Convert.ToInt32(highScore) ? score: highScore;
 
             WriteToFile("highscore.txt", lblHighScore.Text);
         }
@@ -34,7 +34,6 @@ namespace _3T
 
         private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            // Check if the new state is "wmppsPaused" (paused)
             if (e.newState == 3) // 3 corresponds to wmppsPaused
             {
                 // Resume playback immediately (preventing pause)

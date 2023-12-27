@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level1));
             this.target1 = new System.Windows.Forms.PictureBox();
             this.target2 = new System.Windows.Forms.PictureBox();
@@ -41,6 +42,10 @@
             this.lblColon = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.target1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.target2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.target4)).BeginInit();
@@ -189,6 +194,30 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Score";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Interval = 1;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // timer4
+            // 
+            this.timer4.Enabled = true;
+            this.timer4.Interval = 1;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
             // Level1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +245,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Level1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Level1_FormClosed);
+            this.Load += new System.EventHandler(this.Level1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Level1_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.target1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.target2)).EndInit();
@@ -239,5 +269,9 @@
         public System.Windows.Forms.Label lblSec;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer4;
     }
 }

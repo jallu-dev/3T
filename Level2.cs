@@ -9,7 +9,7 @@ namespace _3T
     public partial class Level2 : Form
     {
         private int elapsedMinutes = 0; // Set the initial minutes
-        private int elapsedSeconds = 30;  // Set the initial seconds
+        private int elapsedSeconds = 15;  // Set the initial seconds
         private System.Timers.Timer timer;
 
         string highScore = null;

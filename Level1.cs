@@ -172,5 +172,32 @@ namespace _3T
             }
         }
 
+        private void Level1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            target1.Top +=3;
+            
+            
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            target2.Top -= 3;
+
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            target3.Top +=3;
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            target4.Top -=3;
+        }
     }
 }
